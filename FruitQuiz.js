@@ -1,106 +1,140 @@
 function displayQuiz() {
     const questions = [
         {
-            question: "You've been mysteriously invited to an unfamiliar realm known as Fruitville, accessible only within your dreams. The invitation expires tonight.",
-            choices: ["I don't know, seems risky", "Sounds fun, let's go on an adventure"],
+            question: "You wake up on Valentine’s Day morning, and it’s full of surprises. The doorbell rings as you're eating breakfast.",
+            choices: ["I'll peek carefully through the curtains and observe who’s there before opening. It always pays to be safe!",
+                      "I excitedly open the door, imagining a surprise waiting for me. What could it be?",
+                      "Write a quick thank-you note and leave it anonymously for the delivery person.",
+                      "Greet the delivery person with a playful comment about being perfectly on time."],
             weights: [
-                {judgingScore: +3, perceivingScore: 0 }, // Weight for first choice
-                {perceivingScore: +1, judgingScore:0 }, // Weight for second choice
+                {perceivingScore: +2, thinkingScore: +1, introvertScore: +2 }, // Weight for first choice
+                {extrovertScore: +2, feelingScore: +1, intuitionScore: +1 }, // Weight for second choice
+                {introvertScore: +1, feelingScore: +2, judgingScore: +1 }, // Weight for third choice
+                {extrovertScore: +2, thinkingScore: +1, perceivingScore: +2 } // Weight for fourth choice
             ]
         },
         {
-            question: "You drift into a deep slumber after a long day. All of a sudden, the sweet scent of fruits start to fill the air.",
-            choices: ["Where is the smell coming from?", "Am I in Fruitville"],
+            question: "It turns out the delivery is a mysterious package labeled for you.",
+            choices: ["I shake it playfully, guessing out loud what it could be.",
+                      "Let's open it right away, I'm curious about what’s inside!",
+                      "I think I'll tuck it away for now and plan to open it privately later.",
+                      "I'll examine the package carefully and make sure it’s safe before opening."],
             weights: [
-                {thinkingScore: +1, feelingScore: 0 }, // Weight for first choice
-                {feelingScore: +3, thinkingScore: 0 } // Weight for second choice
+                {perceivingScore: +2, thinkingScore: +1, extrovertScore: +2 }, // Weight for first choice
+                {extrovertScore: +2, feelingScore: +1, intuitionScore: +1 }, // Weight for second choice
+                {introvertScore: +1, feelingScore: +2, judgingScore: +1 }, // Weight for third choice
+                {introvertScore: +2, thinkingScore: +1, judgingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question: "You open your eyes and see that you’re in Fruitville. It’s a sunny morning in Fruitville and fruits are getting ready to start their day. An apple approaches you...",
-            choices: ["This is crazy, I’m dreaming for sure!", "I wonder if there will be any new fruits"],
+            question: "Inside the package, you find a beautiful piece of clothing—a Valentine’s Day outfit!",
+            choices: ["Laugh at its unique or quirky design—it’s definitely a conversation starter.",
+                      "Try it on immediately and admire how it makes you feel bold and confident.",
+                      "Smile at the thoughtfulness and recall a special memory it brings up.",
+                      "Appreciate its practicality and plan to wear it for the day."],
             weights: [
-                {intuitionScore: +3, sensingScore: 0 } , // Weight for first choice
-                {sensingScore: +1, intuitionScore: 0 } , // Weight for second choice
+                {perceivingScore: +2, thinkingScore: +1, extrovertScore: +1 }, // Weight for first choice
+                {extrovertScore: +2, feelingScore: +1, intuitionScore: +1 }, // Weight for second choice
+                {introvertScore: +2, feelingScore: +2, intuitionScore: +1 }, // Weight for third choice
+                {introvertScore: +1, thinkingScore: +1, judgingScore: +2 } // Weight for fourth choice
             ]
         },
         {
-            question: "The apple introduces itself as the Mayor of Fruitville.  “Will you be joining us for the FruitFest at noon? It’s an event meant to welcome newcomers and tourists. And yes, there will be plenty of food!",
-            choices: ["“Of course!”", "“I’ll think about it..”"],
+            question: "Inspired by the gift, you decide to spend the afternoon doing something fun.",
+            choices: ["Call up a few friends for an unplanned meetup—I’ll see where the day takes me.",
+                      "How about I plan a spontaneous adventure, like exploring a new part of town?",
+                      "Maybe I should revisit a favorite spot from my past to relive some good times...",
+                      "I could organize a cozy indoor activity, like crafting or baking, to relax."],
             weights: [
-                {perceivingScore: +1, judgingScore: 0 } , // Weight for first choice
-                {judgingScore: +3, perceivingScore: 0 }, // Weight for second choice
+                {perceivingScore: +2, thinkingScore: +1, extrovertScore: +1 }, // Weight for first choice
+                {extrovertScore: +1, sensingScore: +2, perceivingScore: +1 }, // Weight for second choice
+                {introvertScore: +2, feelingScore: +2, intuitionScore: +1 }, // Weight for third choice
+                {judgingScore: +2, sensingScore: +1, feelingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question: "As you finish your conversation with the Mayor, you can't help but wonder..",
-            choices: ["What food will there be?", "Do fruits eat fruits?"],
+            question: "During your outing, you spot a romantic gesture meant for someone else.",
+            choices: ["I crack a joke about how bold and dramatic it is.",
+                      "I smile softly, storing the memory for later when it's my turn to woo someone.",
+                      "I whoop loudly and encourage the couple with sincere, heartfelt enthusiasm.",
+                      "I just observe quietly, feeling touched by what I'm witnessing."],
             weights: [
-                {sensingScore: +1, intuitionScore: 0 } , // Weight for first choice
-                {intuitionScore: +3, sensingScore: 0 } , // Weight for second choice
+                {perceivingScore: +2, thinkingScore: +1, extrovertScore: +2 }, // Weight for first choice
+                {introvertScore: +1, feelingScore: +2, judgingScore: +1 }, // Weight for second choice
+                {extrovertScore: +2, feelingScore: +1, intuitionScore: +1 }, // Weight for third choice
+                {introvertScore: +2, thinkingScore: +1, feelingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question:"While wandering Fruitville, you notice nobody questioning a human among the fruits. Looking down, you see your limbs, but realize fruits also have their own…",
-            choices: ["Am I still a human?", "Am I a fruit?"],
+            question:"While out and about, you accidentally bump into someone who drops their things.",
+            choices: ["“Oh gosh, I'm so sorry! Here, I'll help!”",
+                      "I quietly pick up their items and hand them back with a polite smile and nod.",
+                      "I try to start a conversation in an attempt to ease any awkwardness.",
+                      "I carefully observe the situation to make sure they're okay before offering my assistance."],
             weights: [
-                {thinkingScore: +1, feelingScore: 0 } , // Weight for first choice
-                {feelingScore: +3, thinkingScore: 0 } , // Weight for second choice
+                {judgingScore: +1, feelingScore: +1, extrovertScore: +2 }, // Weight for first choice
+                {introvertScore: +2, feelingScore: +1, judgingScore: +1 }, // Weight for second choice
+                {extrovertScore: +2, thinkingScore: +1, perceivingScore: +1 }, // Weight for third choice
+                {introvertScore: +2, thinkingScore: +1, judgingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question:"As you stroll along,  your stomach starts to rumble. At that moment, the town clock rings for noon and you decide to head for the FruitFest",
-            choices: ["I’ll make sure to bring some cash for the food stalls", "I can’t wait to explore the culture of Fruitville"],
+            question:"You decide to stop by a cozy café for a break after walking for a while.",
+            choices: ["I order the same thing I usually do, can't go wrong with that.",
+                      "Oooh, there's a new drink on the menu! That sounds exciting!",
+                      "“What would you recommend? Maybe you could tell me why it's so popular...”",
+                      "Wow, there's so many different choices! I think I'll pick something to match my mood for the day."],
             weights: [
-                {sensingScore: +1, intuitionScore: 0 } , // Weight for first choice
-                {intuitionScore: +3, sensingScore: 0 } , // Weight for intuition 
+                {judgingScore: +2, sensingScore: +1, introvertScore: +1 }, // Weight for first choice
+                {extrovertScore: +1, intuitionScore: +2, perceivingScore: +1 }, // Weight for second choice
+                {extrovertScore: +2, feelingScore: +1, intuitionScore: +1 }, // Weight for third choice
+                {introvertScore: +2, feelingScore: +1, sensingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question:"You’ve enjoyed your time at the FruitFest, but your time at Fruitville is coming to an end. How do you want to spend your last few minutes at Fruitville?",
-            choices: ["I need some time alone to process", "I want to socialize and make the most of my visit"],
+            question:"At the café, there’s a small pop-up shop selling Valentine’s Day gifts.",
+            choices: ["I think I'll get something like a handmade trinket or a keepsake. That way it feels personal and meaningful.",
+                      "Maybe a playful or fun item? It'll definitely put a smile on some faces.",
+                      "I could get the classic bouquet of flowers or chocolates, they're timeless for a reason.",
+                      "Oh, I guess I'll get something random for the heck of it."],
             weights: [
-                {introvertScore: +1, extrovertScore: 0 } , // Weight for first choice
-                {extrovertScore: +3, introvertScore: 0 } , // Weight for second choice
+                {feelingScore: +2, intuitionScore: +1, introvertScore: +1 }, // Weight for first choice
+                {extrovertScore: +2, thinkingScore: +1, perceivingScore: +1 }, // Weight for second choice
+                {sensingScore: +1, feelingScore: +2, judgingScore: +1 }, // Weight for third choice
+                {extrovertScore: +1, intuitionScore: +1, perceivingScore: +2 } // Weight for fourth choice
             ]
         },
         {
-            question:"As you prepare to leave Fruitville, the Mayor expresses gratitude for visiting and tells you that your FruitCard will arrive in the mail soon.",
-            choices: ["Finally! That was a strange experience", "Was I a fruit the entire time? I feel so confused"],
+            question:"As the day winds down, you reflect on your experience.",
+            choices: ["There were a lot of thoughtful moments that I shared with the people I encountered today...",
+                      "What an exciting day! I can't believe all that happened, wow!",
+                      "I really enjoyed how comfortable and familiar this day felt overall.",
+                      "Everything that happened today felt so strangely, I wonder what tomorrow's going to bring..."],
             weights: [
-                {thinkingScore: +3, feelingScore: 0 } , // Weight for first choice
-                {feelingScore: +1, thinkingScore: 0 } , // Weight for second choice
+                {feelingScore: +2, intuitionScore: +1, introvertScore: +1 }, // Weight for first choice
+                {extrovertScore: +1, thinkingScore: +1, perceivingScore: +2 }, // Weight for second choice
+                {introvertScore: +1, sensingScore: +1, judgingScore: +2 }, // Weight for third choice
+                {introvertScore: +1, thinkingScore: +1, intuitionScore: +2 } // Weight for fourth choice
             ]
         },
         {
-            question:"While you slowly drift back to reality, memories of your time in Fruitville flood your mind.",
-            choices: ["I can’t stop thinking about the details of what happened", "I feel bittersweet and reminisce about my experience"],
+            question:"After a long day of surprises, you lie down in bed and think about your ideal soulmate.",
+            choices: ["I'd like someone who understands the importance of quiet moments, yet knows how to keep life exciting and spontaneous.",
+                      "There's nothing better than a person who is loyal, stable, and enjoys the little, meaningful details of life.",
+                      "Someone who challenges me intellectually, brings excitement into every moment, and encourages me to step out of my comfort zone.",
+                      "I want a person who is emotionally open, deeply connected to their values, and can share a sense of purpose and compassion in life."],
             weights: [
-                {thinkingScore: +3, feelingScore: 0 } , // Weight for first choice
-                {feelingScore: +1, thinkingScore: 0 } , // Weight for second choice
+                {perceivingScore: +1, intuitionScore: +1, introvertScore: +2 }, // Weight for first choice
+                {introvertScore: +2, feelingScore: +1, judgingScore: +1 }, // Weight for second choice
+                {extrovertScore: +2, thinkingScore: +1, perceivingScore: +1 }, // Weight for third choice
+                {feelingScore: +2, intuitionScore: +1, judgingScore: +1 } // Weight for fourth choice
             ]
         },
         {
-            question:"You awaken from your nap on the couch and see that it’s almost time for dinner. Just then, you get a message from a friend asking you to join them for dinner.",
-            choices: ["Let’s go! I need to tell a friend about my dream", "Have dinner at home and relax instead"],
+            question: "Tugging on your heartstrings...",
+            choices: ["Find out what kind of romantic I am!"],
             weights: [
-                {extrovertScore: +3, introvertScore: 0 } , // Weight for first choice
-                {introvertScore: +1, extrovertScore: 0 } , // Weight for second choice
-            ]
-        },
-        {
-            question:"The next day you hear a ring at your door, your FruitCard has arrived with a letter that says I’m welcome to visit again.",
-            choices: ["I’m already ready to visit again!", "I’ll think about visiting again"],
-            weights: [
-                {perceivingScore: +3, judgingScore: 0 } , // Weight for first choice
-                {judgingScore: +1, perceivingScore: 0 } , // Weight for second choice
-            ]
-        },
-        {
-            question: "Processing your FruitCard...",
-            choices: ["Collect my Fruitcard!"],
-            weights: [
-                {extrovertScore: 0, introvertScore: 0 }, // laceholder
+                {extrovertScore: 0, introvertScore: 0 }, // placeholder
                 {introvertScore: 0, extrovertScore: 0}, //Placeholder
             ]
         },
