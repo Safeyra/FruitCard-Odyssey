@@ -165,7 +165,7 @@ function displayQuiz() {
             "Q8.png",
             "Q9.png",
             "Q10.png",
-            "processing.GIF",
+            "processing.gif",
         ];
         const questionImageElement = document.getElementById('question-image');
         questionImageElement.src = imageURLs[questionIndex];
